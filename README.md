@@ -15,6 +15,24 @@ DIKUArcade is a simple 2D Game Engine, created specifically for the SoftwareDeve
 * Newtonian force functions for artificial gravity
 * More throrough unit-testing
 
+
+### Requirements
+* .NET Core 3.1 SDK and runtime
+
+#### Mac
+* libgdiplus. The Mono project provides an implementation that is available through [homebrew](https://formulae.brew.sh/formula/mono-libgdiplus). 
+
+#### Linux
+* libgdiplus. The Mono project provides an implementation that is available through most package managers.
+
+
+### How to build
+Use the `dotnet` cli tool.
+
+* Building: `dotnet build`
+* Run tests: `dotnet test`
+
+
 ### Development
 
 DIKUArcade is still in development, but regarded fully-functional and ready-for-use.
