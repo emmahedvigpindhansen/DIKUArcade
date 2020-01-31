@@ -19,6 +19,8 @@ DIKUArcade is a simple 2D Game Engine, created specifically for the SoftwareDeve
 ### Requirements
 * .NET Core 3.1 SDK and runtime
 
+Pick an option that suits you here: https://dotnet.microsoft.com/download/dotnet-core/3.1
+
 #### Mac
 * libgdiplus. The Mono project provides an implementation that is available through [homebrew](https://formulae.brew.sh/formula/mono-libgdiplus). 
 
@@ -47,4 +49,5 @@ Oleksandr Shturmov<br>
 Alexander Christensen<br>
 Christian Olsen<br>
 Simon Surland Andersen<br>
+Mads Obitsø<br>
 _(your name here... ?)_
