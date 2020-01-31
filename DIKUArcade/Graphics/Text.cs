@@ -33,12 +33,12 @@ namespace DIKUArcade.Graphics {
         /// <summary>
         /// The color for the text
         /// </summary>
-        private Color color;
+        private System.Drawing.Color color;
 
         public Text(string text, Vec2F pos, Vec2F extent) {
             this.text = text;
             shape = new StationaryShape(pos, extent);
-            color = Color.Black;
+            color = System.Drawing.Color.Black;
             fontSize = 50;
 
             // create a texture id
@@ -72,7 +72,7 @@ namespace DIKUArcade.Graphics {
         private void CreateBitmapTexture() {
             BindTexture();
 
-            Bitmap textBmp = new Bitmap(500, 500); // match window size
+            System.Drawing.Bitmap textBmp = new System.Drawing.Bitmap(500, 500); // match window size
 
             // just allocate memory, so we can update efficiently using TexSubImage2D
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, textBmp.Width, textBmp.Height, 0,
@@ -80,18 +80,18 @@ namespace DIKUArcade.Graphics {
 
             using (System.Drawing.Graphics gfx = System.Drawing.Graphics.FromImage(textBmp))
             {
-                gfx.Clear(Color.Transparent);
+                gfx.Clear(System.Drawing.Color.Transparent);
                 // TODO: Could create an enumeration for choosing btw different font families!
                 Font drawFont = new Font("Arial", fontSize);
                 SolidBrush drawBrush = new SolidBrush(color);
 
                 // TODO: Maybe we should not use shape.Position here, because different coordinate system !!?
-                PointF drawPoint = new PointF(shape.Position.X, shape.Position.Y);
+                System.Drawing.PointF drawPoint = new System.Drawing.PointF(shape.Position.X, shape.Position.Y);
 
                 gfx.DrawString(text, drawFont, drawBrush, drawPoint); // Draw as many strings as you need
             }
 
-            BitmapData data = textBmp.LockBits(new Rectangle(0, 0, textBmp.Width, textBmp.Height),
+            BitmapData data = textBmp.LockBits(new System.Drawing.Rectangle(0, 0, textBmp.Width, textBmp.Height),
                 ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, textBmp.Width, textBmp.Height, 0,
                 PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
@@ -150,7 +150,7 @@ namespace DIKUArcade.Graphics {
                 vec.Z < 0.0f || vec.Z > 1.0f) {
                 throw new ArgumentOutOfRangeException($"RGB Color values must be between 0 and 1: {vec}");
             }
-            color = Color.FromArgb((int)(vec.X * 255.0f), (int)(vec.Y * 255.0f), (int)(vec.Z * 255.0f));
+            color = System.Drawing.Color.FromArgb((int)(vec.X * 255.0f), (int)(vec.Y * 255.0f), (int)(vec.Z * 255.0f));
             CreateBitmapTexture();
         }
 
@@ -166,7 +166,7 @@ namespace DIKUArcade.Graphics {
                 vec.Z < 0 || vec.Z > 255) {
                 throw new ArgumentOutOfRangeException($"RGB Color values must be between 0 and 255: {vec}");
             }
-            color = Color.FromArgb(vec.X, vec.Y, vec.Z);
+            color = System.Drawing.Color.FromArgb(vec.X, vec.Y, vec.Z);
             CreateBitmapTexture();
         }
 

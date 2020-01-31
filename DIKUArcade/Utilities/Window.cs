@@ -79,7 +79,7 @@ namespace DIKUArcade {
             window = new GameWindow((int) width, (int) height) {Title = title};
 
             GL.ClearDepth(1);
-            GL.ClearColor(Color.Black);
+            GL.ClearColor(OpenTK.Color.Black);
 
             AddDefaultKeyEventHandler();
             AddDefaultResizeHandler();
@@ -445,7 +445,7 @@ namespace DIKUArcade {
 
             var bmp = new Bitmap(window.ClientSize.Width, window.ClientSize.Height);
             var data =
-                bmp.LockBits(window.ClientRectangle, ImageLockMode.WriteOnly,
+                bmp.LockBits(new System.Drawing.Rectangle(window.ClientRectangle.Left, window.ClientRectangle.Top, window.ClientRectangle.Right, window.ClientRectangle.Bottom), ImageLockMode.WriteOnly,
                     PixelFormat.Format24bppRgb);
             GL.ReadPixels(0, 0, window.ClientSize.Width, window.ClientSize.Height,
                 OpenTK.Graphics.OpenGL.PixelFormat.Bgr,

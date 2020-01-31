@@ -34,8 +34,8 @@ namespace DIKUArcade.Graphics {
             if (!File.Exists(path)) {
                 throw new FileNotFoundException($"Error: The file \"{path}\" does not exist.");
             }
-            Bitmap image = new Bitmap(path);
-            BitmapData data = image.LockBits(new Rectangle(0, 0, image.Width, image.Height),
+            System.Drawing.Bitmap image = new System.Drawing.Bitmap(path);
+            BitmapData data = image.LockBits(new System.Drawing.Rectangle(0, 0, image.Width, image.Height),
                 ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
 
             // attach it to OpenGL context
@@ -90,10 +90,10 @@ namespace DIKUArcade.Graphics {
             if (!File.Exists(path)) {
                 throw new FileNotFoundException($"Error: The file \"{path}\" does not exist.");
             }
-            Bitmap image = new Bitmap(path);
+            System.Drawing.Bitmap image = new System.Drawing.Bitmap(path);
             var width = (int)((float)image.Width / (float)stridesInImage);
             var posX = currentStride * width;
-            BitmapData data = image.LockBits(new Rectangle(posX, 0, width, image.Height),
+            BitmapData data = image.LockBits(new System.Drawing.Rectangle(posX, 0, width, image.Height),
                 ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
 
             // attach it to OpenGL context
